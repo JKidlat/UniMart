@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In / Sign Up</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl w-full max-w-lg transition-all duration-300">
+        <!-- Header for the form -->
+        <h1 id="form-title" class="text-3xl font-bold text-center text-gray-800 mb-6">Signup For Unimart</h1>
+
+        <!-- Sign Up Form Section -->
+        <form id="signup-form" class="space-y-6">
+            <!-- Full Name Input -->
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-500 focus:border-purple-500 transition duration-150 ease-in-out">
+            </div>
+
+            <!-- Username Input -->
+            <div>
+                <label for="username_signup" class="block text-sm font-medium text-gray-700">Username</label>
+                <input type="text" id="username_signup" name="username_signup" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-500 focus:border-purple-500 transition duration-150 ease-in-out">
+            </div>
+
+            <!-- University Dropdown -->
+            <div>
+                <label for="university" class="block text-sm font-medium text-gray-700">University / College</label>
+                <select id="university" name="university" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 transition duration-150 ease-in-out">
+                    <option value="" disabled selected>Select your institution</option>
+                    <option value="Abot College of Health Sciences and Technology">Abot College of Health Sciences and Technology</option>
+                    <option value="Accra Institute of Technology">Accra Institute of Technology</option>
+                    <option value="Accra Technical University">Accra Technical University</option>
+                    <option value="African University College of Communications">African University College of Communications</option>
+                    <option value="Akenten Appiah-Menka University of Skills Training and Entrepreneurial Development">Akenten Appiah-Menka University of Skills Training and Entrepreneurial Development</option>
+                    <option value="All Nations University College">All Nations University College</option>
+                    <option value="Amen College of Health Science">Amen College of Health Science</option>
+                    <option value="Anglican University College of Technology">Anglican University College of Technology</option>
+                    <option value="Ashesi University">Ashesi University</option>
+                    <option value="Baptist University College">Baptist University College</option>
+                    <option value="Bolgatanga Technical University">Bolgatanga Technical University</option>
+                    <option value="C. K. Tedam University of Technology and Applied Sciences">C. K. Tedam University of Technology and Applied Sciences</option>
+                    <option value="Cape Coast Midwifery Training College">Cape Coast Midwifery Training College</option>
+                    <option value="Cape Coast Nursing Training College">Cape Coast Nursing Training College</option>
+                    <option value="Cape Coast Technical University">Cape Coast Technical University</option>
+                    <option value="Catholic Institute of Business and Technology">Catholic Institute of Business and Technology</option>
+                    <option value="Catholic University College of Ghana">Catholic University College of Ghana</option>
+                    <option value="Central University">Central University</option>
+                    <option value="Christian Service University College">Christian Service University College</option>
+                    <option value="Community Health Nurses Training College, Bole">Community Health Nurses Training College, Bole</option>
+                    <option value="Community Health Nurses Training College, Jirapa">Community Health Nurses Training College, Jirapa</option>
+                    <option value="Community Health Nurses Training College, Nalerigu">Community Health Nurses Training College, Nalerigu</option>
+                    <option value="Community Health Nurses Training College, Navrongo">Community Health Nurses Training College, Navrongo</option>
+                    <option value="Community Health Nurses Training College, Tamale">Community Health Nurses Training College, Tamale</option>
+                    <option value="Community Health Nurses Training College, Tanoso">Community Health Nurses Training College, Tanoso</option>
+                    <option value="Community Health Nurses Training School Fomena">Community Health Nurses Training School Fomena</option>
+                    <option value="Data Link Institute of Business and Technology">Data Link Institute of Business and Technology</option>
+                    <option value="Dominion University College">Dominion University College</option>
+                    <option value="Dunkwa-on-Offin Nursing and Midwifery Training College">Dunkwa-on-Offin Nursing and Midwifery Training College</option>
+                    <option value="ENT Nurses Training School, Kumasi">ENT Nurses Training School, Kumasi</option>
+                    <option value="Family Health Medical School">Family Health Medical School</option>
+                    <option value="Garden City University College">Garden City University College</option>
+                    <option value="Ghana Baptist University College">Ghana Baptist University College</option>
+                    <option value="Ghana Christian University College">Ghana Christian University College</option>
+                    <option value="Ghana Communication Technology University">Ghana Communication Technology University</option>
+                    <option value="Ghana Institute of Languages">Ghana Institute of Languages</option>
+                    <option value="Ghana Institute of Management and Public Administration">Ghana Institute of Management and Public Administration</option>
+                    <option value="Ghana Institute of Surveying and Mapping">Ghana Institute of Surveying and Mapping</option>
+                    <option value="Holy Eucharist University College">Holy Eucharist University College</option>
+                    <option value="Holy Family Midwifery Training College">Holy Family Midwifery Training College</option>
+                    <option value="Holy Family Nursing and Midwifery Training College">Holy Family Nursing and Midwifery Training College</option>
+                    <option value="Holy Family Nurses’ Training College">Holy Family Nurses’ Training College</option>
+                    <option value="Ho Nursing Training College">Ho Nursing Training College</option>
+                    <option value="Ho Technical University">Ho Technical University</option>
+                    <option value="Hopkins Health Training Institute">Hopkins Health Training Institute</option>
+                    <option value="Institute Of Accountancy Training">Institute Of Accountancy Training</option>
+                    <option value="Jayee University College">Jayee University College</option>
+                    <option value="KAAF University College">KAAF University College</option>
+                    <option value="Kings Health College">Kings Health College</option>
+                    <option value="Kings University College">Kings University College</option>
+                    <option value="Kintampo College of Health">Kintampo College of Health</option>
+                    <option value="Klintaps University College of Health and Allied Sciences">Klintaps University College of Health and Allied Sciences</option>
+                    <option value="Knutsford University College">Knutsford University College</option>
+                    <option value="Koforidua Nursing and Midwives Training College">Koforidua Nursing and Midwives Training College</option>
+                    <option value="Koforidua Technical University">Koforidua Technical University</option>
+                    <option value="Korle-Bu Nursing Training College">Korle-Bu Nursing Training College</option>
+                    <option value="Kumasi Technical University">Kumasi Technical University</option>
+                    <option value="Kwame Nkrumah University of Science and Technology">Kwame Nkrumah University of Science and Technology</option>
+                    <option value="Lancaster University, Ghana">Lancaster University, Ghana</option>
+                    <option value="Margaret Marguart Catholic Nursing Training College">Margaret Marguart Catholic Nursing Training College</option>
+                    <option value="Maranatha University College">Maranatha University College</option>
+                    <option value="Methodist University College Ghana">Methodist University College Ghana</option>
+                    <option value="Midwifery Training College, Yeji">Midwifery Training College, Yeji</option>
+                    <option value="Midwifery Training School, Goaso">Midwifery Training School, Goaso</option>
+                    <option value="Midwifery Training School, Kete Krachi">Midwifery Training School, Kete Krachi</option>
+                    <option value="Midwifery Training School, Nandom">Midwifery Training School, Nandom</option>
+                    <option value="Midwifery Training School, Tarkwa">Midwifery Training School, Tarkwa</option>
+                    <option value="Mountcrest University College">Mountcrest University College</option>
+                    <option value="Narh-Bita College">Narh-Bita College</option>
+                    <option value="National Film and Television Institute">National Film and Television Institute</option>
+                    <option value="Nursing and Midwifery Training College, Afosu">Nursing and Midwifery Training College, Afosu</option>
+                    <option value="Nursing and Midwifery Training College, Asanta">Nursing and Midwifery Training College, Asanta</option>
+                    <option value="Nursing and Midwifery Training College, Dadiesoaba">Nursing and Midwifery Training College, Dadiesoaba</option>
+                    <option value="Nursing and Midwifery Training College, Dunkwa-On-Offin">Nursing and Midwifery Training College, Dunkwa-On-Offin</option>
+                    <option value="Nursing and Midwifery Training College, Koforidua">Nursing and Midwifery Training College, Koforidua</option>
+                    <option value="Nursing and Midwifery Training College, Kpembe">Nursing and Midwifery Training College, Kpembe</option>
+                    <option value="Nursing and Midwifery Training College, Kwapong">Nursing and Midwifery Training College, Kwapong</option>
+                    <option value="Nursing and Midwifery Training College, Odumase-Krobo">Nursing and Midwifery Training College, Odumase-Krobo</option>
+                    <option value="Nursing and Midwifery Training College, Sefwi Wiawso">Nursing and Midwifery Training College, Sefwi Wiawso</option>
+                    <option value="Nursing and Midwifery Training College, Sunyani">Nursing and Midwifery Training College, Sunyani</option>
+                    <option value="Nursing and Midwifery Training College, Tepa">Nursing and Midwifery Training College, Tepa</option>
+                    <option value="Nursing and Midwifery Training College, Twifo Praso">Nursing and Midwifery Training College, Twifo Praso</option>
+                    <option value="Nursing and Midwifery Training School, Atibie">Nursing and Midwifery Training School, Atibie</option>
+                    <option value="Nursing Training College, Bawku">Nursing Training College, Bawku</option>
+                    <option value="Nursing Training College, Lawra">Nursing Training College, Lawra</option>
+                    <option value="Nursing Training College, Wa">Nursing Training College, Wa</option>
+                    <option value="Nyaniba Health College">Nyaniba Health College</option>
+                    <option value="Ophthalmic Nursing School, Korle-Bu">Ophthalmic Nursing School, Korle-Bu</option>
+                    <option value="Pneuma Exousia College">Pneuma Exousia College</option>
+                    <option value="Porters College">Porters College</option>
+                    <option value="Presbyterian Midwifery Training College">Presbyterian Midwifery Training College</option>
+                    <option value="Presbyterian University College, Ghana">Presbyterian University College, Ghana</option>
+                    <option value="Public Health Nurses Training School, Korle-Bu">Public Health Nurses Training School, Korle-Bu</option>
+                    <option value="Radford University College">Radford University College</option>
+                    <option value="Regional Maritime University">Regional Maritime University</option>
+                    <option value="Regent University">Regent University</option>
+                </select>
+            </div>
+
+            <!-- Password and Confirm Password -->
+            <div>
+                <label for="password_signup" class="block text-sm font-medium text-gray-700">Create a Password</label>
+                <input type="password" id="password_signup" name="password_signup" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 transition duration-150 ease-in-out">
+                <p id="password-requirements" class="mt-1 text-xs text-gray-500">8+ characters, with numbers, letters, and a special character.</p>
+            </div>
+            <div>
+                <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 transition duration-150 ease-in-out">
+            </div>
+
+            <!-- Buyer/Seller Choice -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">I am a...</label>
+                <div class="mt-2 flex space-x-6">
+                    <div class="flex items-center">
+                        <input id="user_type_buyer" name="user_type" type="radio" value="buyer" required class="focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 rounded-full">
+                        <label for="user_type_buyer" class="ml-2 block text-sm text-gray-700">Buyer</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="user_type_seller" name="user_type" type="radio" value="seller" required class="focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 rounded-full">
+                        <label for="user_type_seller" class="ml-2 block text-sm text-gray-700">Seller</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company/Business Name (conditionally displayed for sellers) -->
+            <div id="company-name-container" class="hidden">
+                <label for="company_name" class="block text-sm font-medium text-gray-700">Company / Business Name</label>
+                <input type="text" id="company_name" name="company_name" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-500 focus:border-purple-500 transition duration-150 ease-in-out">
+            </div>
+
+            <!-- Phone Number Input -->
+            <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required maxlength="10" placeholder="e.g., 0241234567" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-500 focus:border-purple-500 transition duration-150 ease-in-out">
+            </div>
+
+            <!-- Terms and Conditions Checkbox -->
+            <div class="flex items-start">
+                <div class="flex items-center h-5">
+                    <input id="terms" name="terms" type="checkbox" required class="focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 rounded">
+                </div>
+                <div class="ml-3 text-sm">
+                    <label for="terms" class="font-medium text-gray-700">I agree to the <a href="#" class="text-purple-600 hover:text-purple-500 font-semibold">Terms and Conditions</a></label>
+                </div>
+            </div>
+
+            <!-- Signup Button -->
+            <div>
+                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition duration-150 ease-in-out">
+                    Sign Up
+                </button>
+            </div>
+
+            <!-- Switch to Login -->
+            <div class="text-center">
+                <p class="text-sm text-gray-600">Already have an account? <a href="#" id="show-login" class="text-purple-600 hover:text-purple-500 font-semibold">Log in</a></p>
+            </div>
+        </form>
+        <div id="message-box" class="mt-4 p-3 hidden rounded-xl text-center font-medium"></div>
+
+        <!-- Sign In Form Section (initially hidden) -->
+        <form id="login-form" class="space-y-6 hidden">
+            <!-- Username Input -->
+            <div>
+                <label for="username_login" class="block text-sm font-medium text-gray-700">Username</label>
+                <input type="text" id="username_login" name="username_login" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-500 focus:border-purple-500 transition duration-150 ease-in-out">
+            </div>
+
+            <!-- Password Input -->
+            <div>
+                <label for="password_login" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" id="password_login" name="password_login" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 transition duration-150 ease-in-out">
+            </div>
+
+            <!-- Login Button -->
+            <div>
+                <a href="buyer-landing.html" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition duration-150 ease-in-out">
+    Log In
+</a>
+                
+            </div>
+
+            <!-- Switch to Sign Up -->
+            <div class="text-center">
+                <p class="text-sm text-gray-600">Don't have an account? <a href="#" id="show-signup" class="text-purple-600 hover:text-purple-500 font-semibold">Sign up</a></p>
+            </div>
+        </form>
+        
+        <!-- General message box for errors or success messages -->
+        <div id="message-box" class="mt-4 p-3 hidden rounded-xl text-center font-medium"></div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const signupForm = document.getElementById('signup-form');
+            const loginForm = document.getElementById('login-form');
+            const formTitle = document.getElementById('form-title');
+            const showLoginBtn = document.getElementById('show-login');
+            const showSignupBtn = document.getElementById('show-signup');
+            const userTypeSeller = document.getElementById('user_type_seller');
+            const companyNameContainer = document.getElementById('company-name-container');
+            const passwordSignup = document.getElementById('password_signup');
+            const confirmPassword = document.getElementById('confirm_password');
+            const phoneInput = document.getElementById('phone');
+            const messageBox = document.getElementById('message-box');
+
+            // Function to show a message in the message box
+            const showMessage = (message, type) => {
+                messageBox.textContent = message;
+                messageBox.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'bg-red-100', 'text-red-700');
+                if (type === 'success') {
+                    messageBox.classList.add('bg-green-100', 'text-green-700');
+                } else if (type === 'error') {
+                    messageBox.classList.add('bg-red-100', 'text-red-700');
+                }
+            };
+
+            // Toggle between Sign Up and Sign In forms
+            const switchToLogin = (event) => {
+                if (event) event.preventDefault();
+                signupForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                formTitle.textContent = 'Log In to Your Account';
+            };
+
+            const switchToSignup = (event) => {
+                if (event) event.preventDefault();
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+                formTitle.textContent = 'Create Your Account';
+            };
+
+            showLoginBtn.addEventListener('click', switchToLogin);
+            showSignupBtn.addEventListener('click', switchToSignup);
+
+            // Toggle Company/Business Name input based on user type
+            userTypeSeller.addEventListener('change', () => {
+                if (userTypeSeller.checked) {
+                    companyNameContainer.classList.remove('hidden');
+                } else {
+                    companyNameContainer.classList.add('hidden');
+                }
+            });
+
+            // Handle the Sign Up form submission
+            signupForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent default form submission
+
+                // Password validation
+                const passwordValue = passwordSignup.value;
+                const confirmPasswordValue = confirmPassword.value;
+                const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                if (!passwordRegex.test(passwordValue)) {
+                    showMessage('Password must be at least 8 characters and contain at least one letter, one number, and one special character.', 'error');
+                    return;
+                }
+                if (passwordValue !== confirmPasswordValue) {
+                    showMessage('Passwords do not match.', 'error');
+                    return;
+                }
+                
+                // Phone number validation
+                const phoneValue = phoneInput.value;
+                if (!phoneValue.startsWith('0') || phoneValue.length !== 10) {
+                    showMessage('Phone number must start with 0 and be 10 characters long.', 'error');
+                    return;
+                }
+                
+                // All validations passed, simulate successful signup and switch to login
+                showMessage('Sign Up Successful! Please log in with your new credentials.', 'success');
+                setTimeout(() => {
+                    switchToLogin();
+                    messageBox.classList.add('hidden');
+                }, 2000);
+            });
+
+            // Handle the Login form submission
+            loginForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent default form submission
+                
+                // In a real application, you would handle authentication here.
+                // For this example, we'll just show a success message.
+                showMessage('Login successful!', 'success');
+                // Here, you would redirect the user to their dashboard or home page.
+                // For now, we'll just log it to the console.
+                console.log('Login attempt successful.');
+            });
+        });
+    </script>
+
+</body>
+</html>

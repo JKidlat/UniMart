@@ -1,0 +1,253 @@
+/**
+ * UniMart - Main CSS File
+ *
+ * This file contains the primary styles for the UniMart application.
+ * The design philosophy is clean, modern, and inspired by the vibrant colors
+ * of a Ghanaian sunset. We'll use CSS custom properties (variables) for
+ * easy theme management and a mobile-first approach for responsiveness.
+ */
+
+/* ===================================================================================
+   I. FONT IMPORTS & ROOT VARIABLES
+   =================================================================================== */
+
+/* Importing a clean, modern font from Google Fonts. 'Poppins' is a great choice for this project. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    /* Color Palette: Bright African Sunset */
+    --color-primary: #F59E0B; /* A deep indigo for buttons and highlights (like the evening sky) */
+    --color-primary-dark: #F59E0B;
+    --color-secondary: #6366F1; /* A vibrant amber/gold for accents (the sun) */
+    --color-background: #F8F9FA; /* A very light, clean off-white */
+    --color-surface: #FFFFFF; /* Pure white for cards and surfaces */
+    --color-text: #1F2937; /* A dark, readable gray for text */
+    --color-text-light: #6B7280; /* A lighter gray for secondary text */
+    --color-border: #E5E7EB; /* A subtle border color */
+
+    /* Typography */
+    --font-family-base: 'Poppins', sans-serif;
+
+    /* Spacing & Layout */
+    --container-width: 1140px;
+    --container-padding: 1rem;
+
+    /* Borders & Shadows */
+    --border-radius: 0.5rem; /* 8px */
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================================================================================
+   II. GLOBAL STYLES & RESETS
+   =================================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-base);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+/* ===================================================================================
+   III. UTILITY CLASSES
+   =================================================================================== */
+/* These classes are used in our JavaScript to style dynamic elements.
+   This approach is inspired by utility-first frameworks like Tailwind CSS. */
+
+.container {
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+}
+
+.hidden {
+    display: none;
+}
+
+/* These classes correspond to the ones in the productCard.className in script.js */
+.bg-white { background-color: var(--color-surface); }
+.rounded-lg { border-radius: var(--border-radius); }
+.shadow-md { box-shadow: var(--box-shadow); }
+.overflow-hidden { overflow: hidden; }
+.transform { transform: translateY(0); }
+.transition-transform { transition-property: transform; }
+.duration-300 { transition-duration: 300ms; }
+.hover\:-translate-y-2:hover { transform: translateY(-0.5rem); }
+
+
+/* ===================================================================================
+   IV. COMPONENT STYLES
+   =================================================================================== */
+
+/* --- Header & Navigation --- */
+.main-header {
+    background-color: var(--color-surface);
+    box-shadow: var(--box-shadow);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.logo span {
+    color: var(--color-primary);
+}
+
+.nav-links a {
+    color: var(--color-text-light);
+    margin: 0 1rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+
+.mobile-menu-button {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* --- Product Grid & Cards --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+/* The .product-card class is added in script.js */
+.product-card img.w-full {
+    width: 100%;
+}
+.product-card img.h-48 {
+    height: 12rem; /* 192px */
+}
+.product-card img.object-cover {
+    object-fit: cover;
+}
+
+.product-card .p-4 {
+    padding: 1rem;
+}
+
+.product-card .text-lg { font-size: 1.125rem; }
+.product-card .font-bold { font-weight: 700; }
+.product-card .text-gray-800 { color: var(--color-text); }
+
+.product-card .text-sm { font-size: 0.875rem; }
+.product-card .text-gray-600 { color: var(--color-text-light); }
+.product-card .mt-1 { margin-top: 0.25rem; }
+.product-card .font-semibold { font-weight: 600; }
+
+.product-card .flex { display: flex; }
+.product-card .justify-between { justify-content: space-between; }
+.product-card .items-center { align-items: center; }
+.product-card .mt-4 { margin-top: 1rem; }
+
+.product-card .text-xl { font-size: 1.25rem; }
+.product-card .text-indigo-600 { color: var(--color-primary); }
+
+/* --- Buttons --- */
+.product-card button {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px; /* pill shape */
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* ===================================================================================
+   V. RESPONSIVE DESIGN (Mobile-First)
+   =================================================================================== */
+
+/* Styles for screens smaller than 768px (tablets) */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide nav links by default on mobile */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-surface);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: var(--box-shadow);
+    }
+
+    /* This overrides the 'hidden' utility class when the menu is toggled */
+    .nav-links:not(.hidden) {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin: 0.5rem 0;
+    }
+
+    .mobile-menu-button {
+        display: block; /* Show the hamburger menu button */
+    }
+}
