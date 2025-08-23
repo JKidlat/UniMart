@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders | Campus Bazaar</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Phosphor Icons for the navigation bar and other icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/dist/phosphor.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 5rem; /* Space for the fixed bottom navigation bar */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <!-- Top header section -->
+    <header class="bg-white p-4 shadow-md flex justify-between items-center rounded-b-xl">
+        <h1 class="text-2xl font-bold text-gray-800">
+            My Orders
+        </h1>
+        <!-- Small placeholder for Unimart logo -->
+        <div class="h-10 w-10 bg-purple-200 rounded-full flex items-center justify-center font-bold text-purple-800 text-xs">
+            LOGO
+        </div>
+    </header>
+
+    <main class="p-4">
+        <!-- Order Navigation Tabs -->
+        <div class="flex bg-white rounded-xl shadow-md p-2 mb-6">
+            <button id="active-tab" class="flex-1 py-2 px-4 rounded-lg text-center text-sm font-semibold transition-colors duration-150 bg-purple-600 text-white">Active Orders</button>
+            <button id="fulfilled-tab" class="flex-1 py-2 px-4 rounded-lg text-center text-sm font-semibold transition-colors duration-150 text-gray-700 hover:bg-gray-100">Fulfilled Orders</button>
+            <button id="cancelled-tab" class="flex-1 py-2 px-4 rounded-lg text-center text-sm font-semibold transition-colors duration-150 text-gray-700 hover:bg-gray-100">Cancelled Orders</button>
+        </div>
+
+        <!-- Order Content Sections -->
+        <div id="active-orders-section" class="order-section space-y-4">
+            <!-- Active Order 1 -->
+            <div class="bg-white p-4 rounded-xl shadow-md">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-gray-800">Order #A123</span>
+                    <span class="text-xs text-gray-500">Ordered: 2024-07-22</span>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <div class="h-16 w-16 bg-gray-200 rounded-lg flex-shrink-0"></div>
+                    <div>
+                        <p class="font-medium text-gray-700">Product Name</p>
+                        <p class="text-xs text-gray-500">GHS 50.00</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h4 class="text-sm font-semibold text-gray-600 mb-2">Order Status</h4>
+                    <div class="relative pt-1">
+                        <div class="flex items-center justify-between text-xs mb-2">
+                            <span>Order Placed</span>
+                            <span>Seller Received</span>
+                            <span>Delivery</span>
+                        </div>
+                        <div class="flex items-center">
+                            <!-- Progress Bar -->
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-purple-600 h-2 rounded-full" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="mt-4 w-full py-2 px-4 rounded-xl text-sm font-medium text-white bg-red-600 hover:bg-red-700">
+                        Cancel Order
+                    </button>
+                </div>
+            </div>
+
+            <!-- Active Order 2 -->
+            <div class="bg-white p-4 rounded-xl shadow-md">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-gray-800">Order #A124</span>
+                    <span class="text-xs text-gray-500">Ordered: 2024-07-21</span>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <div class="h-16 w-16 bg-gray-200 rounded-lg flex-shrink-0"></div>
+                    <div>
+                        <p class="font-medium text-gray-700">Another Product</p>
+                        <p class="text-xs text-gray-500">GHS 120.00</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h4 class="text-sm font-semibold text-gray-600 mb-2">Order Status</h4>
+                    <div class="relative pt-1">
+                        <div class="flex items-center justify-between text-xs mb-2">
+                            <span>Order Placed</span>
+                            <span>Seller Received</span>
+                            <span>Delivery</span>
+                        </div>
+                        <div class="flex items-center">
+                            <!-- Progress Bar -->
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-purple-600 h-2 rounded-full" style="width: 25%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="mt-4 w-full py-2 px-4 rounded-xl text-sm font-medium text-white bg-red-600 hover:bg-red-700">
+                        Cancel Order
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="fulfilled-orders-section" class="order-section space-y-4 hidden">
+            <!-- Fulfilled Order 1 -->
+            <div class="bg-white p-4 rounded-xl shadow-md">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-gray-800">Order #F101</span>
+                    <span class="text-xs text-gray-500">Ordered: 2024-07-15</span>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <div class="h-16 w-16 bg-gray-200 rounded-lg flex-shrink-0"></div>
+                    <div>
+                        <p class="font-medium text-gray-700">Completed Product</p>
+                        <p class="text-xs text-gray-500">GHS 25.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cancelled-orders-section" class="order-section space-y-4 hidden">
+            <!-- Cancelled Order 1 -->
+            <div class="bg-white p-4 rounded-xl shadow-md">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-gray-800">Order #C205</span>
+                    <span class="text-xs text-gray-500">Ordered: 2024-07-18</span>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <div class="h-16 w-16 bg-gray-200 rounded-lg flex-shrink-0"></div>
+                    <div>
+                        <p class="font-medium text-gray-700">Cancelled Item</p>
+                        <p class="text-xs text-gray-500">GHS 90.00</p>
+                    </div>
+                </div>
+                <div class="mt-2 text-sm text-red-500">
+                    <p>This order was cancelled on 2024-07-19.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white shadow-lg rounded-t-2xl p-2 md:p-4 flex justify-around items-center transition-all duration-300">
+        <!-- Explore Button -->
+        <a href="buyer-explore.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 font-semibold text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-compass-light text-2xl md:text-3xl"></i>
+            <span>Explore</span>
+        </a>
+        <!-- Category Button -->
+        <a href="buyer-category.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-squares-four-light text-2xl md:text-3xl"></i>
+            <span>Category</span>
+        </a>
+        <!-- Orders Button (Active) -->
+        <a href="buyer-orders.html" class="flex flex-col items-center text-purple-600 font-semibold text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-receipt-fill text-2xl md:text-3xl"></i>
+            <span>Orders</span>
+        </a>
+        <!-- Cart Button -->
+        <a href="buyer-cart.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-shopping-cart-light text-2xl md:text-3xl"></i>
+            <span>Cart</span>
+        </a>
+        <!-- Account Button -->
+        <a href="buyer-account.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-user-light text-2xl md:text-3xl"></i>
+            <span>Account</span>
+        </a>
+    </nav>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = {
+                active: document.getElementById('active-tab'),
+                fulfilled: document.getElementById('fulfilled-tab'),
+                cancelled: document.getElementById('cancelled-tab')
+            };
+
+            const sections = {
+                active: document.getElementById('active-orders-section'),
+                fulfilled: document.getElementById('fulfilled-orders-section'),
+                cancelled: document.getElementById('cancelled-orders-section')
+            };
+
+            const allSections = document.querySelectorAll('.order-section');
+
+            // Function to handle tab switching
+            const switchTab = (activeTab) => {
+                // Deactivate all tabs and hide all sections
+                Object.values(tabs).forEach(tab => {
+                    tab.classList.remove('bg-purple-600', 'text-white');
+                    tab.classList.add('text-gray-700', 'hover:bg-gray-100');
+                });
+                allSections.forEach(section => section.classList.add('hidden'));
+
+                // Activate the selected tab and show its section
+                activeTab.classList.remove('text-gray-700', 'hover:bg-gray-100');
+                activeTab.classList.add('bg-purple-600', 'text-white');
+                
+                const sectionId = activeTab.id.replace('-tab', '-orders-section');
+                document.getElementById(sectionId).classList.remove('hidden');
+            };
+
+            // Add event listeners to the tabs
+            tabs.active.addEventListener('click', () => switchTab(tabs.active));
+            tabs.fulfilled.addEventListener('click', () => switchTab(tabs.fulfilled));
+            tabs.cancelled.addEventListener('click', () => switchTab(tabs.cancelled));
+        });
+    </script>
+
+</body>
+</html>

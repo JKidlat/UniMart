@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore | Campus Bazaar</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Phosphor Icons for the navigation bar and other icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/dist/phosphor.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 5rem; /* Space for the fixed bottom navigation bar */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-white p-4 shadow-md flex justify-between items-center rounded-b-xl">
+        <!-- Welcome text with a dynamic username placeholder -->
+        <h1 class="text-2xl font-bold text-gray-800">
+            Welcome, <span id="username-placeholder">User</span>!
+        </h1>
+        <!-- Unimart logo placeholder -->
+        <div class="h-10 w-10 bg-purple-200 rounded-full flex items-center justify-center font-bold text-purple-800 text-xs">
+            LOGO
+        </div>
+    </header>
+
+    <!-- Top header section with search bar and filter button -->
+    <header class="bg-white p-4 shadow-md flex justify-between items-center rounded-b-xl">
+        <h1 class="text-2xl font-bold text-gray-800">
+            Explore
+        </h1>
+       
+    </header>
+
+    <main class="p-4">
+        <!-- Search and Filter Section -->
+        <section class="my-6">
+            <div class="relative flex items-center">
+                <input type="text" id="product-search" placeholder="Search for items..." class="search-input w-full p-3 pl-12 pr-4 text-gray-700 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="ph ph-magnifying-glass text-gray-400"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product sections -->
+        <div id="product-sections" class="space-y-8">
+            <!-- Products will be dynamically added here by JavaScript -->
+        </div>
+
+        <!-- Notification for when an item is added to the cart -->
+        <div id="cart-notification" class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg transition-opacity duration-300 opacity-0 hidden">
+            Item added to cart!
+        </div>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white shadow-lg rounded-t-2xl p-2 md:p-4 flex justify-around items-center transition-all duration-300">
+        <!-- Explore Button (Active) -->
+        <a href="buyer-explore.html" class="flex flex-col items-center text-purple-600 font-semibold text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-compass-fill text-2xl md:text-3xl"></i>
+            <span>Explore</span>
+        </a>
+        <!-- Category Button -->
+        <a href="buyer-category.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-squares-four-light text-2xl md:text-3xl"></i>
+            <span>Category</span>
+        </a>
+        <!-- Orders Button -->
+        <a href="buyer-orders.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-receipt-light text-2xl md:text-3xl"></i>
+            <span>Orders</span>
+        </a>
+        <!-- Cart Button -->
+        <a href="buyer-cart.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-shopping-cart-light text-2xl md:text-3xl"></i>
+            <span>Cart</span>
+        </a>
+        <!-- Account Button -->
+        <a href="buyer-account.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-user-light text-2xl md:text-3xl"></i>
+            <span>Account</span>
+        </a>
+    </nav>
+
+    <script>
+         // A simple function to simulate setting the username from a logged-in session
+        document.addEventListener('DOMContentLoaded', () => {
+            // In a real app, you would fetch this from a user session or cookie
+            const loggedInUsername = "Kidlat"; // Example username
+            const usernamePlaceholder = document.getElementById('username-placeholder');
+            if (usernamePlaceholder && loggedInUsername) {
+                usernamePlaceholder.textContent = loggedInUsername;
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const productSections = document.getElementById('product-sections');
+            const cartNotification = document.getElementById('cart-notification');
+
+            // Simulate product data
+            const products = [
+                { id: 1, name: 'Smart Watch Series 7', price: 250.00, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Watch', section: 'Popular Items' },
+                { id: 2, name: 'Laptop Backpack', price: 85.00, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Backpack', section: 'Popular Items' },
+                { id: 3, name: 'Wireless Mouse', price: 40.00, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Mouse', section: 'Popular Items' },
+                { id: 4, name: 'Headphones', price: 150.00, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Headphones', section: 'Recently Added' },
+                { id: 5, name: 'Coffee Maker', price: 120.00, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Coffee', section: 'Recently Added' }
+            ];
+
+            // Function to render product cards
+            const renderProducts = () => {
+                const popularItems = products.filter(p => p.section === 'Popular Items');
+                const recentlyAdded = products.filter(p => p.section === 'Recently Added');
+
+                productSections.innerHTML = `
+                    <section>
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Popular Items</h2>
+                        <div id="popular-items-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"></div>
+                    </section>
+                    <section>
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Recently Added</h2>
+                        <div id="recently-added-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"></div>
+                    </section>
+                `;
+
+                const popularGrid = document.getElementById('popular-items-grid');
+                const recentlyAddedGrid = document.getElementById('recently-added-grid');
+
+                [popularItems, recentlyAdded].forEach((items, index) => {
+                    const grid = index === 0 ? popularGrid : recentlyAddedGrid;
+                    items.forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = 'bg-white p-4 rounded-xl shadow-md flex flex-col items-center text-center';
+                        card.innerHTML = `
+                            <img src="${item.imageUrl}" alt="${item.name}" class="h-28 w-full object-cover rounded-lg mb-2">
+                            <p class="text-sm font-medium text-gray-700 mt-2">${item.name}</p>
+                            <p class="text-xs text-gray-500">GHS ${item.price.toFixed(2)}</p>
+                            <button class="add-to-cart-btn w-full mt-3 py-2 px-4 rounded-lg text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 transition-colors duration-200"
+                                data-id="${item.id}"
+                                data-name="${item.name}"
+                                data-price="${item.price.toFixed(2)}">
+                                Add to Cart
+                            </button>
+                        `;
+                        grid.appendChild(card);
+                    });
+                });
+            };
+
+            // Function to handle adding items to cart
+            const handleAddToCart = (item) => {
+                // Retrieve cart items from localStorage, or initialize an empty array
+                let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+                
+                // Check if the item is already in the cart
+                const existingItem = cart.find(cartItem => cartItem.id === item.id);
+                
+                if (existingItem) {
+                    // If item exists, increment its quantity
+                    existingItem.quantity++;
+                } else {
+                    // If item is new, add it to the cart with quantity 1
+                    cart.push({ ...item, quantity: 1 });
+                }
+                
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cartItems', JSON.stringify(cart));
+                
+                // Show a quick confirmation message
+                cartNotification.classList.remove('hidden');
+                setTimeout(() => {
+                    cartNotification.classList.add('opacity-100');
+                    setTimeout(() => {
+                        cartNotification.classList.remove('opacity-100');
+                        setTimeout(() => cartNotification.classList.add('hidden'), 300);
+                    }, 1500);
+                }, 10);
+            };
+
+            // Add event listener to the main product sections container
+            productSections.addEventListener('click', (event) => {
+                const button = event.target.closest('.add-to-cart-btn');
+                if (button) {
+                    const product = {
+                        id: parseInt(button.dataset.id),
+                        name: button.dataset.name,
+                        price: parseFloat(button.dataset.price)
+                    };
+                    handleAddToCart(product);
+                }
+            });
+
+            // Initial render of products
+            renderProducts();
+        });
+    </script>
+</body>
+</html>

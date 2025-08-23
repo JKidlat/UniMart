@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account | UniMart</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Phosphor Icons for the navigation bar and other icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/dist/phosphor.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 5rem; /* Space for the fixed bottom navigation bar */
+        }
+        /* Custom styles for the dark mode transition */
+        .dark body {
+            background-color: #1a202c; /* Tailwind's gray-900 */
+            color: #e2e8f0; /* Tailwind's gray-200 */
+        }
+        .dark .bg-white {
+            background-color: #2d3748; /* Tailwind's gray-800 */
+        }
+        .dark .shadow-md {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .dark .text-gray-800 {
+            color: #e2e8f0;
+        }
+        .dark .text-gray-700 {
+            color: #cbd5e0;
+        }
+        .dark .text-gray-500 {
+            color: #a0aec0;
+        }
+        .dark .ph {
+            color: #cbd5e0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen transition-colors duration-300">
+
+    <!-- Top header section -->
+    <header class="bg-white p-4 shadow-md flex justify-between items-center rounded-b-xl transition-colors duration-300">
+        <h1 class="text-2xl font-bold text-gray-800 transition-colors duration-300">
+            My Account
+        </h1>
+        <!-- Small placeholder for Unimart logo -->
+        <div class="h-10 w-10 bg-purple-200 rounded-full flex items-center justify-center font-bold text-purple-800 text-xs">
+            LOGO
+        </div>
+    </header>
+
+    <main class="p-4 flex flex-col md:flex-row gap-6">
+
+        <!-- Sidebar for Account Options -->
+        <aside class="w-full md:w-1/4 bg-white p-6 rounded-xl shadow-md space-y-4 transition-colors duration-300">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4 transition-colors duration-300">Settings</h3>
+            <ul class="space-y-2">
+                <li>
+                    <button id="edit-profile-btn" class="w-full flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                        <i class="ph ph-user-circle text-2xl"></i>
+                        <span>Edit Profile</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="dark-mode-toggle" class="w-full flex items-center justify-between py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                        <div class="flex items-center gap-3">
+                            <i class="ph ph-moon text-2xl"></i>
+                            <span>Dark Mode</span>
+                        </div>
+                        <i id="dark-mode-icon" class="ph ph-toggle-off text-2xl"></i>
+                    </button>
+                </li>
+                <li>
+                    <a href="buyer-help.html" class="w-full flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                        <i class="ph ph-question text-2xl"></i>
+                        <span>Help</span>
+                    </a>
+                </li>
+                <li>
+                    <button id="messages-btn" class="w-full flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                        <i class="ph ph-chats-circle text-2xl"></i>
+                        <span>Messages</span>
+                    </button>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Profile Content -->
+        <div class="flex-1 bg-white p-6 rounded-xl shadow-md transition-colors duration-300">
+            <h2 class="text-xl font-bold text-gray-800 mb-6 transition-colors duration-300">My Profile</h2>
+            
+            <!-- Profile Image Section -->
+            <div class="flex flex-col items-center mb-6">
+                <div class="relative w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-purple-600 shadow-lg">
+                    <img id="profile-image" src="https://placehold.co/128x128/D1D5DB/6B7280?text=User" alt="Profile Image" class="w-full h-full object-cover">
+                    <label for="image-upload" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-60 transition-opacity duration-200 cursor-pointer">
+                        <i class="ph ph-camera text-3xl text-white"></i>
+                    </label>
+                    <input type="file" id="image-upload" accept="image/*" class="hidden">
+                </div>
+                <button id="remove-image-btn" class="text-red-500 hover:text-red-700 text-sm font-medium transition-colors duration-200 hidden">Remove Photo</button>
+            </div>
+            
+            <!-- User Details -->
+            <div class="space-y-4">
+                <div>
+                    <p class="text-sm font-semibold text-gray-500">Full Name</p>
+                    <p id="full-name" class="text-lg font-medium text-gray-800 mt-1">Jane Doe</p>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold text-gray-500">Username</p>
+                    <p id="username" class="text-lg font-medium text-gray-800 mt-1">janedoe123</p>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold text-gray-500">Mobile Number</p>
+                    <p id="mobile-number" class="text-lg font-medium text-gray-800 mt-1">+233 24 123 4567</p>
+                </div>
+            </div>
+
+            <div id="notifications-section" class="mt-8">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Notifications</h3>
+                <div class="bg-gray-100 p-4 rounded-xl space-y-2">
+                    <div class="flex items-start gap-3 p-3 bg-white rounded-lg shadow-sm">
+                        <i class="ph ph-receipt-light text-xl text-purple-600"></i>
+                        <div>
+                            <p class="text-sm font-medium text-gray-800">Your order #12345 has been shipped!</p>
+                            <p class="text-xs text-gray-500 mt-1">2 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-white rounded-lg shadow-sm">
+                        <i class="ph ph-package-light text-xl text-purple-600"></i>
+                        <div>
+                            <p class="text-sm font-medium text-gray-800">New item added to your wishlist: Laptop Bag</p>
+                            <p class="text-xs text-gray-500 mt-1">5 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="messaging-section" class="mt-8">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Messages</h3>
+                <div class="bg-gray-100 p-4 rounded-xl space-y-2">
+                    <div class="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm">
+                        <i class="ph ph-chats text-xl text-purple-600"></i>
+                        <div>
+                            <p class="text-sm font-medium text-gray-800">You have a new message from Jane's Gadgets.</p>
+                            <p class="text-xs text-gray-500 mt-1">"Hi, your order is ready for pickup."</p>
+                        </div>
+                    </div>
+                    <button class="w-full py-2 px-4 rounded-lg text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 transition-colors">
+                        Start a new message
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white shadow-lg rounded-t-2xl p-2 md:p-4 flex justify-around items-center transition-all duration-300">
+        <!-- Explore Button -->
+        <a href="buyer-explore.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 font-semibold text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-compass-light text-2xl md:text-3xl"></i>
+            <span>Explore</span>
+        </a>
+        <!-- Category Button -->
+        <a href="buyer-category.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-squares-four-light text-2xl md:text-3xl"></i>
+            <span>Category</span>
+        </a>
+        <!-- Orders Button -->
+        <a href="buyer-orders.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-receipt-light text-2xl md:text-3xl"></i>
+            <span>Orders</span>
+        </a>
+        <!-- Cart Button -->
+        <a href="buyer-cart.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-shopping-cart-light text-2xl md:text-3xl"></i>
+            <span>Cart</span>
+        </a>
+        <!-- Account Button (Active) -->
+        <a href="buyer-account.html" class="flex flex-col items-center text-purple-600 font-semibold text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-user-fill text-2xl md:text-3xl"></i>
+            <span>Account</span>
+        </a>
+    </nav>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const darkModeIcon = document.getElementById('dark-mode-icon');
+            const profileImage = document.getElementById('profile-image');
+            const imageUpload = document.getElementById('image-upload');
+            const removeImageBtn = document.getElementById('remove-image-btn');
+            
+            // Function to apply the dark mode class to the body
+            const applyDarkMode = () => {
+                const isDarkMode = localStorage.getItem('darkMode') === 'true';
+                if (isDarkMode) {
+                    body.classList.add('dark');
+                    if (darkModeIcon) {
+                        darkModeIcon.classList.remove('ph-toggle-off');
+                        darkModeIcon.classList.add('ph-toggle-on');
+                    }
+                } else {
+                    body.classList.remove('dark');
+                    if (darkModeIcon) {
+                        darkModeIcon.classList.remove('ph-toggle-on');
+                        darkModeIcon.classList.add('ph-toggle-off');
+                    }
+                }
+            };
+
+            // Apply dark mode on initial page load
+            applyDarkMode();
+
+            // Dark mode toggle functionality for this specific page
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    const isNowDarkMode = !body.classList.contains('dark');
+                    localStorage.setItem('darkMode', isNowDarkMode);
+                    applyDarkMode();
+                });
+            }
+
+            // Profile image upload functionality
+            if (imageUpload) {
+                imageUpload.addEventListener('change', (event) => {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            profileImage.src = e.target.result;
+                            removeImageBtn.classList.remove('hidden');
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+
+            // Remove profile image functionality
+            if (removeImageBtn) {
+                removeImageBtn.addEventListener('click', () => {
+                    profileImage.src = 'https://placehold.co/128x128/D1D5DB/6B7280?text=User';
+                    removeImageBtn.classList.add('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

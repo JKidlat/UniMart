@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories | UniMart</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Phosphor Icons for the navigation bar and other icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/dist/phosphor.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 5rem; /* Space for the fixed bottom navigation bar */
+        }
+        /* Custom styles for the search bar focus effect */
+        .search-input:focus {
+            border-color: #8B5CF6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5);
+        }
+        /* Hide scrollbar for the sidebar on small screens */
+        .hide-scrollbar::-webkit-scrollbar {
+            width: 0.25rem;
+        }
+        .hide-scrollbar::-webkit-scrollbar-thumb {
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <!-- Top header section with search bar and filter button -->
+    <header class="bg-white p-4 shadow-md flex justify-between items-center rounded-b-xl">
+        <h1 class="text-2xl font-bold text-gray-800">
+            Categories
+        </h1>
+        <!-- Small placeholder for Unimart logo -->
+        <div class="h-10 w-10 bg-purple-200 rounded-full flex items-center justify-center font-bold text-purple-800 text-xs">
+            LOGO
+        </div>
+    </header>
+
+    <main class="p-4">
+        <!-- Search and Filter Section -->
+        <section class="my-6">
+            <div class="relative flex items-center">
+                <input type="text" id="product-search" placeholder="Search for items..." class="search-input w-full p-3 pl-12 pr-4 text-gray-700 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="ph ph-magnifying-glass text-gray-400"></i>
+                </div>
+            </div>
+
+            <!-- Filter Options (Initially hidden, can be toggled) -->
+            <div id="filter-options" class="mt-4 bg-white p-4 rounded-xl shadow-md hidden">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Filter Products</h3>
+                <div class="space-y-4">
+                    <!-- Price Filter -->
+                    <div>
+                        <label for="price-range" class="block text-sm font-medium text-gray-700">Price Range</label>
+                        <input type="range" id="price-range" min="0" max="1000" value="500" class="w-full mt-1">
+                        <p class="text-xs text-gray-500 mt-1">GHS 0 - <span id="price-value">500</span></p>
+                    </div>
+                    <!-- Other filter options would go here -->
+                    <div>
+                        <label for="seller-name" class="block text-sm font-medium text-gray-700">Seller Name</label>
+                        <input type="text" id="seller-name" placeholder="e.g., Jane's Gadgets" class="w-full mt-1 px-3 py-2 border rounded-xl">
+                    </div>
+                    <div>
+                        <label for="university-filter" class="block text-sm font-medium text-gray-700">University</label>
+                        <input type="text" id="university-filter" placeholder="e.g., University of Ghana" class="w-full mt-1 px-3 py-2 border rounded-xl">
+                    </div>
+                    <div>
+                        <label for="product-type" class="block text-sm font-medium text-gray-700">Product Type</label>
+                        <input type="text" id="product-type" placeholder="e.g., Laptop" class="w-full mt-1 px-3 py-2 border rounded-xl">
+                    </div>
+                    <!-- You can add more filters here, such as Product Brand, Seller Rating, Location etc. -->
+                    <button class="w-full py-2 px-4 rounded-xl text-sm font-medium text-white bg-purple-600 hover:bg-purple-700">
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Area: Sidebar + Products -->
+        <div class="flex flex-col md:flex-row gap-4">
+            <!-- Sidebar for Categories -->
+            <aside class="md:w-1/3 lg:w-1/4 bg-white p-4 rounded-xl shadow-md space-y-2 max-h-[80vh] overflow-y-auto hide-scrollbar">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Categories</h3>
+                <ul class="space-y-1 text-sm">
+                    <li><button data-category="All" class="w-full text-left py-2 px-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-150">All Products</button></li>
+                    <li><button data-category="Food" class="w-full text-left py-2 px-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-150">Food</button></li>
+                    <li>
+                        <button class="w-full text-left py-2 px-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-150 flex items-center justify-between">
+                            Mobile gadgets
+                            <i class="ph ph-caret-down text-gray-500 text-base transition-transform duration-200"></i>
+                        </button>
+                        <ul class="hidden ml-4 space-y-1 mt-1 nested-list">
+                            <li><button data-category="Mobile phones" class="w-full text-left py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors duration-150">Mobile phones</button></li>
+                            <li><button data-category="Laptops" class="w-full text-left py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors duration-150">Laptops</button></li>
+                            <li><button data-category="Accessories" class="w-full text-left py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors duration-150">Phone and laptop accessories</button></li>
+                        </ul>
+                    </li>
+                    <li><button data-category="Clothes" class="w-full text-left py-2 px-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-150">Clothes</button></li>
+                    <li><button data-category="Services" class="w-full text-left py-2 px-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-150">Services</button></li>
+                    <li><button data-category="Basic goods" class="w-full text-left py-2 px-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-150">Basic goods</button></li>
+                    <li>
+                        <button class="w-full text-left py-2 px-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-150 flex items-center justify-between">
+                            Automobiles
+                            <i class="ph ph-caret-down text-gray-500 text-base transition-transform duration-200"></i>
+                        </button>
+                        <ul class="hidden ml-4 space-y-1 mt-1 nested-list">
+                            <li><button data-category="Cars" class="w-full text-left py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors duration-150">Cars</button></li>
+                            <li><button data-category="Bicycles" class="w-full text-left py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors duration-150">Bicycles</button></li>
+                            <li><button data-category="Motorbikes" class="w-full text-left py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors duration-150">Motorbikes</button></li>
+                            <li><button data-category="Spare parts" class="w-full text-left py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors duration-150">Spare parts</button></li>
+                        </ul>
+                    </li>
+                    <li><button data-category="Fashion Accessories" class="w-full text-left py-2 px-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-150">Fashion Accessories</button></li>
+                    <li>
+                        <button class="w-full text-left py-2 px-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-150 flex items-center justify-between">
+                            Footwear
+                            <i class="ph ph-caret-down text-gray-500 text-base transition-transform duration-200"></i>
+                        </button>
+                        <ul class="hidden ml-4 space-y-1 mt-1 nested-list">
+                            <li><button data-category="Men Footwear" class="w-full text-left py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors duration-150">Men Footwear</button></li>
+                            <li><button data-category="Women Footwear" class="w-full text-left py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors duration-150">Women Footwear</button></li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Product Display Area -->
+            <div id="product-list" class="flex-1">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">All Products</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    <!-- Products will be dynamically added here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification for when an item is added to the cart -->
+        <div id="cart-notification" class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg transition-opacity duration-300 opacity-0 hidden">
+            Item added to cart!
+        </div>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white shadow-lg rounded-t-2xl p-2 md:p-4 flex justify-around items-center transition-all duration-300">
+        <!-- Explore Button -->
+        <a href="buyer-explore.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 font-semibold text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-compass-light text-2xl md:text-3xl"></i>
+            <span>Explore</span>
+        </a>
+        <!-- Category Button (Active) -->
+        <a href="buyer-category.html" class="flex flex-col items-center text-purple-600 font-semibold text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-squares-four-fill text-2xl md:text-3xl"></i>
+            <span>Category</span>
+        </a>
+        <!-- Orders Button -->
+        <a href="buyer-orders.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-receipt-light text-2xl md:text-3xl"></i>
+            <span>Orders</span>
+        </a>
+        <!-- Cart Button -->
+        <a href="buyer-cart.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-shopping-cart-light text-2xl md:text-3xl"></i>
+            <span>Cart</span>
+        </a>
+        <!-- Account Button -->
+        <a href="buyer-account.html" class="flex flex-col items-center text-gray-500 hover:text-purple-600 text-xs md:text-sm p-2 transition-transform duration-200 transform hover:scale-105">
+            <i class="ph ph-user-light text-2xl md:text-3xl"></i>
+            <span>Account</span>
+        </a>
+    </nav>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productSearch = document.getElementById('product-search');
+            const productList = document.getElementById('product-list');
+            const categoryButtons = document.querySelectorAll('button[data-category]');
+            const nestedListToggles = document.querySelectorAll('button:not([data-category])');
+            const priceRange = document.getElementById('price-range');
+            const priceValue = document.getElementById('price-value');
+            const cartNotification = document.getElementById('cart-notification');
+
+            // Simulate product data for demonstration, adding image URLs
+            const products = [
+                { id: 1, name: 'Fresh Tomatoes', category: 'Food', price: 15, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Tomatoes', seller: 'Amina', university: 'UG', brand: 'Local', rating: 4.5, type: 'Vegetable' },
+                { id: 2, name: 'Samsung Galaxy A32', category: 'Mobile phones', price: 900, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Phone', seller: 'Tech Mart', university: 'KNUST', brand: 'Samsung', rating: 4.8, type: 'Smartphone' },
+                { id: 3, name: 'Laptop Charger', category: 'Accessories', price: 50, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Charger', seller: 'Tech Zone', university: 'UCC', brand: 'Generic', rating: 4.2, type: 'Accessory' },
+                { id: 4, name: 'T-shirt', category: 'Clothes', price: 30, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=T-shirt', seller: 'Style Hub', university: 'UDS', brand: 'Wearable', rating: 5.0, type: 'Apparel' },
+                { id: 5, name: 'Consultation Service', category: 'Services', price: 150, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Service', seller: 'Jane Doe', university: 'UEW', brand: null, rating: 4.9, type: 'Service' },
+                { id: 6, name: 'Stationery Set', category: 'Basic goods', price: 25, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Stationery', seller: 'Campus Store', university: 'GIMPA', brand: 'School', rating: 4.3, type: 'School Supplies' },
+                { id: 7, name: 'Used Toyota Corolla', category: 'Cars', price: 40000, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Car', seller: 'Car Deals', university: 'UG', brand: 'Toyota', rating: 4.6, type: 'Vehicle' },
+                { id: 8, name: 'Bicycle Lock', category: 'Spare parts', price: 45, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Lock', seller: 'Bike Shop', university: 'KNUST', brand: 'Durable', rating: 4.1, type: 'Accessory' },
+                { id: 9, name: 'Wristwatch', category: 'Fashion Accessories', price: 120, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Watch', seller: 'Classy', university: 'UCC', brand: 'Fashion', rating: 4.7, type: 'Accessory' },
+                { id: 10, name: 'Men\'s Sandals', category: 'Men Footwear', price: 80, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Sandals', seller: 'Footwear King', university: 'UDS', brand: 'Comfort', rating: 4.5, type: 'Shoes' },
+                { id: 11, name: 'Women\'s Heels', category: 'Women Footwear', price: 200, imageUrl: 'https://placehold.co/150x150/E2E8F0/A0AEC0?text=Heels', seller: 'Glamour Feet', university: 'UEW', brand: 'High End', rating: 4.9, type: 'Shoes' }
+            ];
+
+            // Function to render products
+            const renderProducts = (filteredProducts) => {
+                const grid = productList.querySelector('.grid');
+                productList.innerHTML = `<h2 class="text-xl font-bold text-gray-800 mb-4">Products</h2>
+                                         <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>`;
+                const newGrid = productList.querySelector('.grid');
+
+                if (filteredProducts.length === 0) {
+                    newGrid.innerHTML = '<p class="col-span-full text-center text-gray-500">No products found in this category.</p>';
+                    return;
+                }
+                filteredProducts.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-white p-4 rounded-xl shadow-md text-center flex flex-col items-center';
+                    card.innerHTML = `
+                        <img src="${product.imageUrl}" alt="${product.name}" class="h-28 w-full object-cover rounded-lg mb-2">
+                        <p class="text-sm font-medium text-gray-700 mt-2">${product.name}</p>
+                        <p class="text-xs text-gray-500">GHS ${product.price.toFixed(2)}</p>
+                        <button class="add-to-cart-btn w-full mt-3 py-2 px-4 rounded-lg text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 transition-colors duration-200"
+                                data-id="${product.id}"
+                                data-name="${product.name}"
+                                data-price="${product.price.toFixed(2)}">
+                                Add to Cart
+                        </button>
+                    `;
+                    newGrid.appendChild(card);
+                });
+            };
+
+            // Function to handle adding items to cart
+            const handleAddToCart = (item) => {
+                let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+                const existingItem = cart.find(cartItem => cartItem.id === item.id);
+                
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({ ...item, quantity: 1 });
+                }
+                
+                localStorage.setItem('cartItems', JSON.stringify(cart));
+                
+                cartNotification.classList.remove('hidden');
+                setTimeout(() => {
+                    cartNotification.classList.add('opacity-100');
+                    setTimeout(() => {
+                        cartNotification.classList.remove('opacity-100');
+                        setTimeout(() => cartNotification.classList.add('hidden'), 300);
+                    }, 1500);
+                }, 10);
+            };
+
+            // Initial render of all products
+            renderProducts(products);
+            
+            // Search functionality
+            productSearch.addEventListener('input', (event) => {
+                const query = event.target.value.toLowerCase();
+                const filtered = products.filter(product => product.name.toLowerCase().includes(query));
+                renderProducts(filtered);
+            });
+
+            // Category filtering
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    categoryButtons.forEach(btn => btn.classList.remove('bg-purple-100', 'text-purple-800', 'font-semibold'));
+                    event.target.classList.add('bg-purple-100', 'text-purple-800', 'font-semibold');
+
+                    const category = event.target.dataset.category;
+                    let filtered = products;
+                    if (category !== 'All') {
+                        filtered = products.filter(product => product.category === category);
+                    }
+                    renderProducts(filtered);
+                });
+            });
+
+            // Handle nested list toggles
+            nestedListToggles.forEach(button => {
+                button.addEventListener('click', () => {
+                    const nestedList = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    if (nestedList) {
+                        nestedList.classList.toggle('hidden');
+                        icon.classList.toggle('rotate-180');
+                    }
+                });
+            });
+
+            // Price filter slider functionality
+            priceRange.addEventListener('input', (event) => {
+                priceValue.textContent = event.target.value;
+            });
+
+            // Add event listener for "Add to Cart" buttons
+            document.getElementById('product-list').addEventListener('click', (event) => {
+                const button = event.target.closest('.add-to-cart-btn');
+                if (button) {
+                    const product = {
+                        id: parseInt(button.dataset.id),
+                        name: button.dataset.name,
+                        price: parseFloat(button.dataset.price)
+                    };
+                    handleAddToCart(product);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
